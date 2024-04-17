@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hehe</title>
+    <style>
+        /* Background styling */
+        body {
+            background: linear-gradient(135deg, #ff6e7f, #bfe9ff);
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Set background height to viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrolling */
+            position: relative; /* Position relative for absolute positioning of fireworks */
+        }
+
+        /* Present box styling */
+        #present {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            perspective: 1000px;
+            cursor: pointer; /* Cursor style for clickable effect */
+        }
+
+        .present-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s; /* Smooth transition for opening animation */
+        }
+
+        .front, .back, .left, .right, .top, .bottom {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, red, yellow);
+            border: 2px solid #fff;
+            box-sizing: border-box;
+            transition: transform 0.5s; /* Smooth transition for opening animation */
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(-100px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        /* Rotate animation */
+        .open {
+            transform: translateZ(-100px) rotateY(-180deg);
+        }
+
+        /* Message styling */
+        .message {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: #fff;
+            top: 50%;
+            transform: translateY(-50%) rotateY(180deg); /* Fix orientation */
+        }
+    </style>
+</head>
+<body>
+    <div id="present" onclick="openPresent()">
+        <div class="present-box" id="presentBox">
+            <div class="front">
+                <div class="message">Happy Birthday!</div>
+            </div>
+            <div class="back"></div>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+
+    <script>
+        function openPresent() {
+            var presentBox = document.getElementById('presentBox');
+            presentBox.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
